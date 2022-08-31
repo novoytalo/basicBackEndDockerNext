@@ -1,0 +1,9 @@
+FROM node:16
+
+
+WORKDIR /home/node/appback
+
+
+COPY package.json ./
+RUN npm i -g @nestjs/cli
+
