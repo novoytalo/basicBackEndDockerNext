@@ -2,7 +2,30 @@
 version: '3.1'
 
 services:
+  
+
+  db:
+    image: postgres
+    restart: always
+    container_name: 'pgsql'
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: pgadmin
+      POSTGRES_PASSWORD: pgpalavra
+      POSTGRES_DB: mydatabase
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
   node-ytalo-backend:
+    depends_on:
+      - db
     build:
       context: .
       dockerfile: DockerFile.dev
@@ -14,21 +37,5 @@ services:
     restart: always
     volumes:
       - .:/home/node/appback
-
-  db:
-    image: postgres
-    restart: always
-    container_name: 'pgsql'
-    ports:
-      - 8082:8082
-    environment:
-      POSTGRES_USER: pgadmin
-      POSTGRES_PASSWORD: pgpalavra
-      POSTGRES_DB: meubandodedados
-    
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
+volumes:
+  pg-data:
