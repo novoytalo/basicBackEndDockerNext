@@ -1,0 +1,15 @@
+
+###
+POST http://localhost:3000/cats
+
+###
+GET http://localhost:3000/cats/docs
+###
+GET http://localhost:3000/cats/12
+###
+# the subdomain need to configure Docker host path
+# GET http://account.exemple.com/3000
+
+###
+GET http://localhost:3000/cats/asyncfunction
+#Get a async function on sserve side
