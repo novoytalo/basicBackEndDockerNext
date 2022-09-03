@@ -7,6 +7,6 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   username: 'pgadmin',
   password: 'pgpalavra',
   database: 'mydatabase',
-  entities: [],
+  entities: [__dirname + '/../**/*.entity.{js,ts}'],
   synchronize: true,
 };
