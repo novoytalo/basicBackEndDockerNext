@@ -53,3 +53,15 @@ Content-Type: application/json
 {
     "id":"4"
 }
+
+###
+PATCH  http://localhost:3000/users/usingprovider
+Content-Type: application/json
+
+{
+    "id":"7",
+    "name":"myUser20200",
+    "email":"test22@teste.com",
+    "role":"admin",
+    "status":true
+}
