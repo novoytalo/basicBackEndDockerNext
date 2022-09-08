@@ -7,9 +7,49 @@ GET http://localhost:3000/cats/docs
 ###
 GET http://localhost:3000/cats/12
 ###
-# the subdomain need to configure Docker host path
+# the subdomain need to be configured over Docker host path
 # GET http://account.exemple.com/3000
 
 ###
 GET http://localhost:3000/cats/asyncfunction
-#Get a async function on sserve side
+#Get a async function on serve side
+###
+GET http://localhost:3000/cats/createdto
+
+
+#in this case create a cat list... but it's only temp data,
+
+###
+POST http://localhost:3000/cats/usingprovider
+Content-Type: application/json
+
+{
+    "name":"mycat1",
+    "age":10,
+    "breed":"unknow"
+}
+###
+GET http://localhost:3000/cats/usingprovider
+
+# using server to save data 
+###
+POST http://localhost:3000/users/usingprovider
+Content-Type: application/json
+
+{
+    "name":"myUser2",
+    "email":"test22@teste.com",
+    "role":"admin",
+    "status":true
+}
+
+###
+GET http://localhost:3000/users/usingprovider
+
+###
+DELETE http://localhost:3000/users/usingprovider 
+Content-Type: application/json
+
+{
+    "id":"4"
+}

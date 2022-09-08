@@ -11,9 +11,13 @@ import {
   Body,
 } from '@nestjs/common';
 import { Request } from 'express';
+import { CatsService } from './cats.service';
 import { CreateCatDto } from './create-cat.dto';
+import { Cat } from './interfaces/cat.interface';
 @Controller('cats')
 export class CatsController {
+  //using constructor to use cat service
+  constructor(private catService: CatsService) {}
   @Post()
   async createdto(@Body() CreateCatDto: CreateCatDto) {
     return 'This action adds a new cat';
@@ -21,11 +25,6 @@ export class CatsController {
   @Get('asyncfunction')
   async findAll2(): Promise<any> {
     return [];
-  }
-  @Get(':id')
-  findOne(@Param() params): string {
-    console.log(params.id);
-    return `This action return a #${params.id} cat`;
   }
   @Get('docs')
   @Redirect('https://docs.nestjs.com', 302)
@@ -39,8 +38,21 @@ export class CatsController {
   create(): string {
     return 'This action adds a new cat';
   }
+  @Post('usingprovider')
+  async createProvider(@Body() CreateCatDto: CreateCatDto) {
+    this.catService.create(CreateCatDto);
+  }
   @Get('sub')
-  findAll(@Req() request: Request): string {
+  findAllProvider(@Req() request: Request): string {
     return 'This controller make a retur off cats';
+  }
+  @Get('usingprovider')
+  async findAll(): Promise<Cat[]> {
+    return this.catService.findAll();
+  }
+  @Get(':id')
+  findOne(@Param() params): string {
+    console.log(params.id);
+    return `This action return a #${params.id} cat`;
   }
 }

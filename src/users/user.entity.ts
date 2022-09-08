@@ -1,3 +1,4 @@
+import { generate } from 'rxjs';
 import {
   BaseEntity,
   Entity,
@@ -11,25 +12,25 @@ import {
 @Entity()
 @Unique(['email'])
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
-  @Column({ nullable: false, type: 'varchar', length: 200 })
+  @Column({ nullable: true, type: 'varchar', length: 200 })
   email: string;
 
   @Column({ nullable: false, type: 'varchar', length: 200 })
   name: string;
 
-  @Column({ nullable: false, type: 'varchar', length: 20 })
+  @Column({ nullable: true, type: 'varchar', length: 20 })
   role: string;
 
-  @Column({ nullable: false, default: true })
+  @Column({ nullable: true, default: true })
   status: boolean;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   password: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   salt: string;
 
   @Column({ nullable: true, type: 'varchar', length: 64 })
@@ -43,4 +44,8 @@ export class User extends BaseEntity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  //if want to difine realtions... multiples
+  // @OneToMany(type => Photo, photo => photo.user)
+  // photos: Photo[];
 }
