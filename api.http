@@ -37,8 +37,9 @@ POST http://localhost:3000/users/usingprovider
 Content-Type: application/json
 
 {
+    "id":"55",
     "name":"myUser2",
-    "email":"test22@teste.com",
+    "email":"test255@teste.com",
     "role":"admin",
     "status":true
 }
@@ -65,3 +66,7 @@ Content-Type: application/json
     "role":"admin",
     "status":true
 }
+
+//// great table
+###
+GET http://localhost:3000/grandetabela

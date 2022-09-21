@@ -8,8 +8,12 @@ import { AccountControllerController } from './account-controller/account-contro
 import { CatsService } from './cats/cats.service';
 import { CatsModule } from './cats/cats.module';
 import { DataSource } from 'typeorm';
+import { GrandetabelaModule } from './grandetabela/grandetabela.module';
+import { ProductsModule } from './products/products.module';
+import { ProductsSalesModule } from './products_sales/products_sales.module';
+
 @Module({
-  imports: [TypeOrmModule.forRoot(typeOrmConfig), UsersModule, CatsModule],
+  imports: [TypeOrmModule.forRoot(typeOrmConfig), UsersModule, CatsModule, GrandetabelaModule, ProductsModule, ProductsSalesModule],
   controllers: [
     // CatsController,
     AdminControllerController,
