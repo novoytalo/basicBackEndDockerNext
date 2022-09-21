@@ -1,15 +1,23 @@
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { User } from 'src/users/user.entity';
+import {
+  // TypeOrmModuleAsyncOptions,
+  TypeOrmModuleOptions,
+} from '@nestjs/typeorm';
 
+import { env } from 'process';
+// const username = env.POSTGRES_USER;
+// const password = env.POSTGRES_PASSWORD;
+// const database = env.POSTGRES_DB;
+// const host = env.POSTGRES_HOST;
+// console.log('variaveis .env ' + username + ' ' + password + ' ' + database);
 export const typeOrmConfig: TypeOrmModuleOptions = {
+  // export const typeOrmConfig: TypeOrmModuleAsyncOptions = {
   type: 'postgres',
-  host: 'db',
   port: 5432,
-  username: 'pgadmin',
-  password: 'pgpalavra',
-  database: 'mydatabase',
+  host: env.POSTGRES_HOST,
+  username: env.POSTGRES_USER,
+  password: env.POSTGRES_PASSWORD,
+  database: env.POSTGRES_DB,
   entities: [__dirname + '/../**/*.entity.{js,ts}'],
-  // entities: [User],
   synchronize: true,
   // retryAttempts: 10,
   // retryDelay: 2000,

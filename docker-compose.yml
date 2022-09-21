@@ -31,6 +31,14 @@ services:
     command: >
       sh -c "npm install \
              npm run start:dev"
+    environment:
+          POSTGRES_USER: pgadmin
+          POSTGRES_PASSWORD: pgpalavra
+          POSTGRES_DB: mydatabase
+          POSTGRES_HOST: db
+    # or creat a .env and use env_file as rote
+    # env_file:
+    #   - .env
     restart: always
     volumes:
       - .:/home/node/appback

@@ -11,9 +11,19 @@ import { DataSource } from 'typeorm';
 import { GrandetabelaModule } from './grandetabela/grandetabela.module';
 import { ProductsModule } from './products/products.module';
 import { ProductsSalesModule } from './products_sales/products_sales.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeOrmConfig), UsersModule, CatsModule, GrandetabelaModule, ProductsModule, ProductsSalesModule],
+  imports: [
+    // ConfigModule.forRoot({ envFilePath: '.env' }),
+    ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRoot(typeOrmConfig),
+    UsersModule,
+    CatsModule,
+    GrandetabelaModule,
+    ProductsModule,
+    ProductsSalesModule,
+  ],
   controllers: [
     // CatsController,
     AdminControllerController,
