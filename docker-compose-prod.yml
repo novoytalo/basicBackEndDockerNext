@@ -1,3 +1,6 @@
+# use terminal command :
+# docker-compose -f 'docker-compose-prod.yml' up --build
+# docker-compose -f 'docker-compose-prod.yml' down
 version: '3.1'
 
 services:
@@ -11,8 +14,8 @@ services:
       POSTGRES_USER: pgadmin
       POSTGRES_PASSWORD: pgpalavra
       POSTGRES_DB: mydatabase
-    volumes:
-      - pg-data:/var/lib/postgresql/data
+    # volumes:
+    #   - pg-data:/var/lib/postgresql/data
 
   adminer:
     image: adminer
@@ -21,22 +24,23 @@ services:
       - 8080:8080
 
   node-ytalo-backend:
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
     #image from docker hub... need to make aws work on docker-compose
-    #On case of dev you don't need it
-    # image: ytalojacs/nestjsbasic_1-0
-    build:
-      context: .
-      dockerfile: DockerFile.dev
+    image: ytalojacs/nestjsbasic_1-0
+    # build:
+    #   context: .
+    #   dockerfile: DockerFile.dev
     ports:
       - "3000:3000"
     command: >
-     sh -c "npm install \
-             npm run build \
-             npm run start:prod"
+      sh -c "npm run build \
+              npm run start:prod"
+#      sh -c "npm install \
+#              npm run build \
+#              npm run start:prod"
 
-            npm run start:dev"
+#             npm run start:dev"
 
     environment:
           POSTGRES_USER: pgadmin
@@ -46,8 +50,8 @@ services:
     # or creat a .env and use env_file as rote
     # env_file:
     #   - .env
-    restart: always
-    volumes:
-      - .:/home/node/appback
-volumes:
-  pg-data:
+    # restart: always
+#     volumes:
+#       - .:/home/node/appback
+# volumes:
+#   pg-data:
