@@ -21,5 +21,5 @@ Update -> - Add Docker-compose-prod to deploy the production
           - Created Docker image on Docker hub to deploy online
           - Test the code in AWS, Amazon ECS and all works as intended... currents endpoints working.
 
-AWS: basicly you need to login on docker, login on AWS... change and create a context Docker, use this context and connect with AWS services. 
-Maybe can I make some video about this? ...
+AWS: basically you need to login on docker, login on AWS... change and create a context Docker, use this context and connect with AWS services. 
+Maybe can I make some video about this? ... 

@@ -14,9 +14,6 @@ services:
       POSTGRES_USER: pgadmin
       POSTGRES_PASSWORD: pgpalavra
       POSTGRES_DB: mydatabase
-    # volumes:
-    #   - pg-data:/var/lib/postgresql/data
-
   adminer:
     image: adminer
     restart: always
@@ -24,34 +21,14 @@ services:
       - 8080:8080
 
   node-ytalo-backend:
-    # depends_on:
-    #   - db
-    #image from docker hub... need to make aws work on docker-compose
     image: ytalojacs/nestjsbasic_1-0
-    # build:
-    #   context: .
-    #   dockerfile: DockerFile.dev
     ports:
       - "3000:3000"
     command: >
       sh -c "npm run build \
               npm run start:prod"
-#      sh -c "npm install \
-#              npm run build \
-#              npm run start:prod"
-
-#             npm run start:dev"
-
     environment:
           POSTGRES_USER: pgadmin
           POSTGRES_PASSWORD: pgpalavra
           POSTGRES_DB: mydatabase
           POSTGRES_HOST: db
-    # or creat a .env and use env_file as rote
-    # env_file:
-    #   - .env
-    # restart: always
-#     volumes:
-#       - .:/home/node/appback
-# volumes:
-#   pg-data:
