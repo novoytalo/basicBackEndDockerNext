@@ -38,8 +38,8 @@ Content-Type: application/json
 
 {
     "id":"55",
-    "name":"myUser2",
-    "email":"test2556@teste.com",
+    "name":"myUser22",
+    "email":"test25@teste.com",
     "role":"admin",
     "status":true
 }
@@ -68,8 +68,16 @@ Content-Type: application/json
 }
 
 //// great table
+
+//table data organized by data internalcode
 ###
 GET http://localhost:3000/grandetabela
 
 
+# ###
+# GET http://localhost:3000/grandetabela/interval_id
 
+//data sorted by id and get one specific interval of ids 
+# http://localhost:3000/grandetabela/`${interval_id_start}`/`${interval_id_end}`
+###
+GET http://localhost:3000/grandetabela/0/100

@@ -7,8 +7,9 @@ import { Grandetabela } from './entities/grandetabela.entity';
 import { Between } from 'typeorm';
 import { addYears, subYears } from 'date-fns';
 // TypeORM Query Operators
-export const AfterDate = (date: Date) => Between(date, addYears(date, 1000));
-export const BeforeDate = (date: Date) => Between(subYears(date, 1000), date);
+export const AfterDate = (date: Date) => Between(date, addYears(date, 10));
+export const BeforeDate = (date: Date) => Between(subYears(date, 10), date);
+export const idInteval = (id: number, id2: number) => Between(id, id2);
 @Injectable()
 export class GrandetabelaService {
   constructor(
@@ -33,6 +34,30 @@ export class GrandetabelaService {
           {
             // Order_Date: BeforeDate(new Date()),
             Order_Date: BeforeDate(date),
+          },
+          //take only collumn Order_Date and Quantity
+          // { Order_Date: date, Quantity: 'Quantity' },
+        ],
+      });
+    } catch (error) {
+      console.log('Error on Query All data!');
+    }
+  }
+  async findAllid(interval_id_start, interval_id_end): Promise<any> {
+    // return `This action returns all grandetabela`;
+
+    try {
+      const date = new Date();
+      // const date2 = new Date();
+      // const current_date2 =
+      //   date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+      return this.grandeTabelaRepository.find({
+        select: ['id', 'Order_Date', 'Quantity'],
+        where: [
+          {
+            // Order_Date: BeforeDate(new Date()),
+            // Order_Date: BeforeDate(date),
+            id: idInteval(interval_id_start, interval_id_end),
           },
           //take only collumn Order_Date and Quantity
           // { Order_Date: date, Quantity: 'Quantity' },

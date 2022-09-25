@@ -53,9 +53,9 @@ export class Grandetabela extends BaseEntity {
   @Column({ nullable: false, type: 'varchar', length: 200 })
   Product_Name: string;
   @Column({ nullable: false, type: 'varchar', length: 200 })
-  Sales: string;
+  Sales: number;
   @Column({ nullable: false, type: 'varchar', length: 200 })
-  Quantity: string;
+  Quantity: number;
   @Column({ nullable: false, type: 'varchar', length: 200 })
   Discount: string;
   @Column({ nullable: false, type: 'varchar', length: 200 })

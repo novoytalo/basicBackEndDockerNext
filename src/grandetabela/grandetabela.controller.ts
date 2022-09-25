@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { GrandetabelaService } from './grandetabela.service';
 import { CreateGrandetabelaDto } from './dto/create-grandetabela.dto';
 import { UpdateGrandetabelaDto } from './dto/update-grandetabela.dto';
@@ -16,6 +24,16 @@ export class GrandetabelaController {
   findAll() {
     return this.grandetabelaService.findAll();
   }
+  @Get(':interval_id_start/:interval_id_end')
+  findAllid(
+    @Param('interval_id_start') interval_id_start: number,
+    @Param('interval_id_end') interval_id_end: number,
+  ) {
+    return this.grandetabelaService.findAllid(
+      interval_id_start,
+      interval_id_end,
+    );
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
@@ -23,7 +41,10 @@ export class GrandetabelaController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateGrandetabelaDto: UpdateGrandetabelaDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateGrandetabelaDto: UpdateGrandetabelaDto,
+  ) {
     return this.grandetabelaService.update(+id, updateGrandetabelaDto);
   }
 
