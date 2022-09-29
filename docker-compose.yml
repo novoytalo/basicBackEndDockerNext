@@ -3,7 +3,7 @@ version: '3.1'
 services:
   db:
     image: postgres
-    restart: always
+    # restart: always
     container_name: 'pgsql'
     ports:
       - 5432:5432
@@ -16,7 +16,7 @@ services:
 
   adminer:
     image: adminer
-    restart: always
+    # restart: always
     ports:
       - 8080:8080
 
@@ -43,7 +43,7 @@ services:
     # or creat a .env and use env_file as rote
     # env_file:
     #   - .env
-    restart: always
+    # restart: always
     volumes:
       - .:/home/node/appback
 volumes:

@@ -1,4 +1,6 @@
 
+### if you want to use Prophet the api and point look at api.http from : https://github.com/novoytalo/forecastprophetdocker
+
 ###
 POST http://localhost:3000/cats
 
@@ -57,15 +59,7 @@ Content-Type: application/json
 
 ###
 PATCH  http://localhost:3000/users/usingprovider
-Content-Type: application/json
-
-{
-    "id":"7",
-    "name":"myUser20200",
-    "email":"test22@teste.com",
-    "role":"admin",
-    "status":true
-}
+01/03/14
 
 //// great table
 
@@ -80,4 +74,13 @@ GET http://localhost:3000/grandetabela
 //data sorted by id and get one specific interval of ids 
 # http://localhost:3000/grandetabela/`${interval_id_start}`/`${interval_id_end}`
 ###
-GET http://localhost:3000/grandetabela/0/100
+GET http://localhost:3000/grandetabela/interval_id/0/100
+
+###
+GET http://localhost:3000/grandetabela/interval_date
+Content-Type: application/json
+
+{
+    "interval_date_start": "01/03/14" ,
+    "interval_date_end": "01/03/15"
+}

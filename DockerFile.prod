@@ -7,3 +7,5 @@ WORKDIR /home/node/appback
 COPY package.json ./
 # COPY dist ./
 #RUN npm i -g @nestjs/cli
+#From https://github.com/novoytalo/forecastprophetdocker
+ENTRYPOINT ["python", "./finally.py"]

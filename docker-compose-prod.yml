@@ -32,3 +32,7 @@ services:
           POSTGRES_PASSWORD: pgpalavra
           POSTGRES_DB: mydatabase
           POSTGRES_HOST: db
+  prophet:
+    image: ytalojacs/prophetforecast-1_0
+    ports:
+      - "3001:3001"

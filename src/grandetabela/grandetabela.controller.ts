@@ -24,7 +24,7 @@ export class GrandetabelaController {
   findAll() {
     return this.grandetabelaService.findAll();
   }
-  @Get(':interval_id_start/:interval_id_end')
+  @Get('interval_id/:interval_id_start/:interval_id_end')
   findAllid(
     @Param('interval_id_start') interval_id_start: number,
     @Param('interval_id_end') interval_id_end: number,
@@ -34,7 +34,17 @@ export class GrandetabelaController {
       interval_id_end,
     );
   }
-
+  @Get('interval_date/:interval_id_start/:interval_id_end')
+  findAllDate(
+    @Body('interval_date_start') interval_date_start: any,
+    // @Body('interval_date_end') interval_date_end: any,
+  ) {
+    return interval_date_start;
+    // return this.grandetabelaService.findAllDate(
+    //   interval_date_start,
+    //   interval_date_end,
+    // );
+  }
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.grandetabelaService.findOne(+id);
