@@ -1,6 +1,7 @@
 // export class Grandetabela {}
 
 // import { generate } from 'rxjs';
+
 import {
   BaseEntity,
   Entity,
@@ -27,7 +28,7 @@ export class Grandetabela extends BaseEntity {
   @Column({ nullable: false, type: 'varchar', length: 200 })
   Ship_Date: Date;
   @Column({ nullable: false, type: 'varchar', length: 200 })
-  Ship_Mode: Date;
+  Ship_Mode: string;
   @Column({ nullable: false, type: 'varchar', length: 200 })
   Customer_ID: string;
   @Column({ nullable: false, type: 'varchar', length: 200 })

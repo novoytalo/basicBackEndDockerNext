@@ -25,7 +25,9 @@ export class GrandetabelaService {
     // return `This action returns all grandetabela`;
 
     try {
-      const date = new Date();
+      // console.log(new Date());
+      // const date = new Date('2022/10/03');
+      // console.log(date);
       // const date2 = new Date();
       // const current_date2 =
       //   date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
@@ -34,7 +36,7 @@ export class GrandetabelaService {
         where: [
           {
             // Order_Date: BeforeDate(new Date()),
-            Order_Date: BeforeDate(date),
+            Order_Date: BeforeDate(new Date()),
           },
           //take only collumn Order_Date and Quantity
           // { Order_Date: date, Quantity: 'Quantity' },

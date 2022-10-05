@@ -34,12 +34,15 @@ export class GrandetabelaController {
       interval_id_end,
     );
   }
-  @Get('interval_date/:interval_id_start/:interval_id_end')
+  @Get('interval_date')
   findAllDate(
-    @Body('interval_date_start') interval_date_start: any,
+    @Body() data: any,
     // @Body('interval_date_end') interval_date_end: any,
   ) {
-    return interval_date_start;
+    return this.grandetabelaService.findAllDate(
+      data.interval_date_start,
+      data.interval_date_end,
+    );
     // return this.grandetabelaService.findAllDate(
     //   interval_date_start,
     //   interval_date_end,

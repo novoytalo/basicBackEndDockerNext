@@ -59,8 +59,9 @@ Content-Type: application/json
 
 ###
 PATCH  http://localhost:3000/users/usingprovider
-01/03/14
-
+# 01/03/14
+###
+Get http://localhost:4000
 //// great table
 
 //table data organized by data internalcode
@@ -81,6 +82,6 @@ GET http://localhost:3000/grandetabela/interval_date
 Content-Type: application/json
 
 {
-    "interval_date_start": "01/03/14" ,
-    "interval_date_end": "01/03/15"
+    "interval_date_start": "01/01/2014" ,
+    "interval_date_end": "2015/08/15"
 }

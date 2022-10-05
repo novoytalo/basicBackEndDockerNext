@@ -1,25 +1,39 @@
 # use terminal command :
 # docker-compose -f 'docker-compose-prod.yml' up --build
 # docker-compose -f 'docker-compose-prod.yml' down
+# This is my final product
 version: '3.1'
 
 services:
   db:
     image: postgres
-    restart: always
+    # restart: always
     container_name: 'pgsql'
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
       POSTGRES_USER: pgadmin
       POSTGRES_PASSWORD: pgpalavra
       POSTGRES_DB: mydatabase
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"
+    # networks:
+    #   mynetwork:
+    #     ipv4_address: 172.20.20.1
+    networks: 
+      - production-network
   adminer:
     image: adminer
-    restart: always
+    # restart: always
     ports:
-      - 8080:8080
-
+      - "8084:8080"
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"
+    # networks:
+    #   mynetwork:
+    #     ipv4_address: 172.20.70.1
+    networks: 
+      - production-network
   node-ytalo-backend:
     image: ytalojacs/nestjsbasic_1-0
     ports:
@@ -32,7 +46,96 @@ services:
           POSTGRES_PASSWORD: pgpalavra
           POSTGRES_DB: mydatabase
           POSTGRES_HOST: db
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"
+    # networks:
+    #   mynetwork:
+    #     ipv4_address: 172.20.50.1
+    networks: 
+      - production-network
   prophet:
     image: ytalojacs/prophetforecast-1_0
     ports:
       - "3001:3001"
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"
+    # networks:
+    #   mynetwork:
+    #     ipv4_address: 172.20.100.1
+    networks: 
+      - production-network
+  front-end:
+    depends_on:
+      - node-ytalo-backend
+    image: ytalojacs/frontendjsprophet
+    environment:
+      PORT: 3010
+    command: >
+      sh -c "npm run build \
+              npm run start"
+    ports:
+      - "3010:3010"
+    networks: 
+      - production-network
+  reverse-proxy-nginx:
+    image: ytalojacs/nginx-reverse-proxy-prophet-backend
+    ports:
+      - "8080:80"
+    depends_on:
+      - node-ytalo-backend
+      - front-end
+      - prophet
+    networks: 
+      - production-network
+networks:
+  production-network:
+    driver: bridge
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"
+    # links: 
+    #   - "node-ytalo-backend:myback.org"
+    # networks:
+    #   mynetwork:
+    #     ipv4_address: 172.20.128.1
+# networks:
+#   mynetwork:
+#     ipam:
+#       config:
+#         - subnet: 172.20.0.0/16
+#  docker prune the network... in case u are using some. even if the container is down
+# docker network prune
+
+#command to show network
+#docker network ls
+
+
+# docker network inspect networkname
+# basicbackenddockernext_default
+# "172.19.0.0/16",
+# "Gateway": "172.19.0.1"
+
+# frontendnestjs_default
+#  "Subnet": "172.20.0.0/16",
+# "Gateway": "172.20.0.1"
+
+# forecastprophetdocker_default 
+#  "Subnet": "172.18.0.0/16",
+#  "Gateway": "172.18.0.1"
+
+

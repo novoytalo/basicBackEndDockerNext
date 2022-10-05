@@ -7,7 +7,7 @@ WORKDIR /home/node/appback
 COPY package.json ./
 #COPY all if you need to create a image on docker hub. 
 #on windows copy all files stop the hotreload
-# COPY . .
+COPY . .
 # COPY dist ./
 #RUN npm i -g @nestjs/cli
 
