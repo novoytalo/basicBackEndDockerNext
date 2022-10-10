@@ -34,7 +34,7 @@ export class GrandetabelaController {
       interval_id_end,
     );
   }
-  @Get('interval_date')
+  @Post('interval_date')
   findAllDate(
     @Body() data: any,
     // @Body('interval_date_end') interval_date_end: any,

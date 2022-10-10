@@ -1,7 +1,7 @@
 # use terminal command :
 # docker-compose -f 'docker-compose-prod.yml' up --build
 # docker-compose -f 'docker-compose-prod.yml' down
-# This is my final product
+# This is my final product to sent to the cloud
 version: '3.1'
 
 services:
@@ -26,7 +26,7 @@ services:
     image: adminer
     # restart: always
     ports:
-      - "8084:8080"
+      - "8080:8080"
     # extra_hosts:
     #   - "host.docker.internal:host-gateway"
     # networks:
@@ -66,32 +66,38 @@ services:
     #     ipv4_address: 172.20.100.1
     networks: 
       - production-network
-  front-end:
-    depends_on:
-      - node-ytalo-backend
-    image: ytalojacs/frontendjsprophet
-    environment:
-      PORT: 3010
-    command: >
-      sh -c "npm run build \
-              npm run start"
-    ports:
-      - "3010:3010"
-    networks: 
-      - production-network
-  reverse-proxy-nginx:
-    image: ytalojacs/nginx-reverse-proxy-prophet-backend
-    ports:
-      - "8080:80"
-    depends_on:
-      - node-ytalo-backend
-      - front-end
-      - prophet
-    networks: 
-      - production-network
+  #the front end I'll use vercel so this part for now ignore...
+  # but the idea is to use reverse proxy to use the same cluster at AWS. 
+  # front-end:
+  #   depends_on:
+  #     - node-ytalo-backend
+  #   image: ytalojacs/frontendjsprophet
+  #   environment:
+  #     PORT: 3010
+  #   command: >
+  #     sh -c "npm run build \
+  #             npm run start"
+  #   ports:
+  #     - "3010:3010"
+  #   networks: 
+  #     - production-network
+  # reverse-proxy-nginx:
+  #   image: ytalojacs/nginx-reverse-proxy-prophet-backend
+  #   ports:
+  #     - "8080:8080"
+  #     - "8090:8090"
+  #   depends_on:
+  #     - node-ytalo-backend
+  #     - front-end
+  #     - prophet
+  #   networks: 
+  #     - production-network
 networks:
   production-network:
-    driver: bridge
+    name: production-network
+    # external: true
+
+    # driver: bridge
 
 
 

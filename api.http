@@ -78,10 +78,13 @@ GET http://localhost:3000/grandetabela
 GET http://localhost:3000/grandetabela/interval_id/0/100
 
 ###
-GET http://localhost:3000/grandetabela/interval_date
+GET http://host.docker.internal:3000/grandetabela/interval_id/0/100
+
+###
+POST http://localhost:3000/grandetabela/interval_date
 Content-Type: application/json
 
 {
-    "interval_date_start": "01/01/2014" ,
-    "interval_date_end": "2015/08/15"
+    "interval_date_start": "2014/01/01" ,
+    "interval_date_end": "2014/02/15"
 }

@@ -71,7 +71,10 @@ export class GrandetabelaService {
         select: ['id', 'Order_Date', 'Quantity'],
         where: [
           {
-            Order_Date: dateInteval(interval_date_start, interval_date_end),
+            Order_Date: dateInteval(
+              new Date(interval_date_start),
+              new Date(interval_date_end),
+            ),
           },
         ],
       });

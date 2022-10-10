@@ -11,8 +11,8 @@ services:
       POSTGRES_USER: pgadmin
       POSTGRES_PASSWORD: pgpalavra
       POSTGRES_DB: mydatabase
-    volumes:
-      - pg-data:/var/lib/postgresql/data
+    # volumes:
+    #   - pg-data:/var/lib/postgresql/data
 
   adminer:
     image: adminer
