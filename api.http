@@ -85,6 +85,6 @@ POST http://localhost:3000/grandetabela/interval_date
 Content-Type: application/json
 
 {
-    "interval_date_start": "2014/01/01" ,
-    "interval_date_end": "2014/02/15"
+    "interval_date_start": "2014-10-10T13:27:26.306Z" ,
+    "interval_date_end": "2015-10-10T13:27:26.306Z"
 }

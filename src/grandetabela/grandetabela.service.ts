@@ -67,13 +67,15 @@ export class GrandetabelaService {
     // return `This action returns all grandetabela`;
 
     try {
-      return this.grandeTabelaRepository.find({
+      return await this.grandeTabelaRepository.find({
         select: ['id', 'Order_Date', 'Quantity'],
         where: [
           {
             Order_Date: dateInteval(
-              new Date(interval_date_start),
-              new Date(interval_date_end),
+              // new Date(interval_date_start),
+              // new Date(interval_date_end),
+              interval_date_start,
+              interval_date_end,
             ),
           },
         ],

@@ -36,9 +36,14 @@ export class GrandetabelaController {
   }
   @Post('interval_date')
   findAllDate(
-    @Body() data: any,
+    @Body() data: { interval_date_start: Date; interval_date_end: Date },
     // @Body('interval_date_end') interval_date_end: any,
   ) {
+    console.log(
+      'intervalo dentro servidor:',
+      data.interval_date_start,
+      data.interval_date_end,
+    );
     return this.grandetabelaService.findAllDate(
       data.interval_date_start,
       data.interval_date_end,
