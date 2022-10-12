@@ -33,6 +33,10 @@ export class GrandetabelaService {
       //   date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
       return this.grandeTabelaRepository.find({
         select: ['id', 'Order_Date', 'Quantity'],
+        order: {
+          // name: "ASC",
+          id: 'ASC',
+        },
         where: [
           {
             // Order_Date: BeforeDate(new Date()),
@@ -52,6 +56,10 @@ export class GrandetabelaService {
     try {
       return this.grandeTabelaRepository.find({
         select: ['id', 'Order_Date', 'Quantity'],
+        order: {
+          // name: "ASC",
+          id: 'ASC',
+        },
         where: [
           {
             id: idInteval(interval_id_start, interval_id_end),
@@ -69,6 +77,11 @@ export class GrandetabelaService {
     try {
       return await this.grandeTabelaRepository.find({
         select: ['id', 'Order_Date', 'Quantity'],
+        // take: 3,
+        order: {
+          // name: "ASC",
+          id: 'ASC',
+        },
         where: [
           {
             Order_Date: dateInteval(
