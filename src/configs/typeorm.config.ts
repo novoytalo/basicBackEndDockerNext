@@ -19,6 +19,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   database: env.POSTGRES_DB,
   entities: [__dirname + '/../**/*.entity.{js,ts}'],
   synchronize: true,
+  cache: true,
   // retryAttempts: 10,
   // retryDelay: 2000,
   autoLoadEntities: true,

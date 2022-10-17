@@ -85,14 +85,14 @@ POST http://localhost:3000/grandetabela/interval_date
 Content-Type: application/json
 
 {
-    "interval_date_start": "2014-10-10T13:27:26.306Z" ,
-    "interval_date_end": "2015-10-10T13:27:26.306Z"
+    "interval_date_start": "2014-10-01T13:27:26.306Z" ,
+    "interval_date_end": "2014-10-05T13:27:26.306Z"
 }
 ###
 POST http://localhost:3000/grandetabela/interval_date
 Content-Type: application/json
 
 {
-    "interval_date_start": "2014/10/23" ,
-    "interval_date_end": "2015/10/15"
+    "interval_date_start": "2014/10/01" ,
+    "interval_date_end": "2014/10/05"
 }

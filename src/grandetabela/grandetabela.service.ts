@@ -45,6 +45,7 @@ export class GrandetabelaService {
           //take only collumn Order_Date and Quantity
           // { Order_Date: date, Quantity: 'Quantity' },
         ],
+        cache: true,
       });
     } catch (error) {
       console.log('Error on Query All data!');
@@ -65,6 +66,7 @@ export class GrandetabelaService {
             id: idInteval(interval_id_start, interval_id_end),
           },
         ],
+        cache: true,
       });
     } catch (error) {
       console.log('Error on Query All data!');
@@ -92,6 +94,7 @@ export class GrandetabelaService {
             ),
           },
         ],
+        cache: true,
       });
     } catch (error) {
       console.log('Error on Query All data!');
